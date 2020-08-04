@@ -1,0 +1,47 @@
+<div class="form-group row">
+  <div class="col-11">
+    <input type="text"
+    class="form-control mr-4"  name="filter" [(ngModel)]="filterValue.strNombre" id="" aria-describedby="helpId" placeholder="Buscar">
+  </div>
+  <div class="col">
+    <button class="btn btn-sm btn-primary dropdown" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
+    aria-expanded="false">
+    <i class="fas fa-ellipsis-h"></i>
+</button>
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
+    <a class="dropdown-item" style="cursor: pointer;" (click)="exportPDF()"><i class="far fa-file-pdf"></i> PDF</a>
+    <a class="dropdown-item" style="cursor: pointer;" (click)="exportAsXLSX()"><i class="far fa-file-excel"></i> EXCEL</a>
+  </div>
+
+</div>
+</div>
+
+<table class="table table-striped table-sm">
+    <thead class="text-center">
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Activo</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr *ngFor="let item of categoria | filterBy : filterValue">
+        <td>{{item.strNombre}}</td>
+        <td>{{item.strDescripcion}}</td>
+        <td>{{item.blnActivo ? 'Si' : 'No'}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary dropdown" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <i class="fas fa-ellipsis-h"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
+            <a class="dropdown-item" style="cursor: pointer;" (click)="mostrarActualizar(item._id)"><i class="fas fa-edit"></i> Editar</a>
+            <a *ngIf="item.blnActivo" class="dropdown-item" style="cursor: pointer;" (click)="activar(item.blnActivo,item._id)"><i class="far fa-square"></i> Desactivar</a>
+            <a *ngIf="!item.blnActivo" class="dropdown-item" style="cursor: pointer;" (click)="activar(item.blnActivo,item._id)"><i class="far fa-check-square"></i> Activar</a>
+            <a class="dropdown-item" style="cursor: pointer;" (click)="gestionarPlatillos(item._id)"><i class="fas fa-cogs"></i> Gestionar platillos</a>
+            
+          </div></td>
+      </tr>
+    </tbody>
+  </table>

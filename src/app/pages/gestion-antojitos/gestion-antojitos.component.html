@@ -1,0 +1,18 @@
+<div class="container mt-5">
+    <div class="container align-content-center">
+        <h1 class="text-left"><i class="fas fa-utensils"></i> Gestión de antojitos mexicanos</h1>
+        <hr>
+        <div class="row">
+            <div class="col-3">
+                <app-registrar-antojito *ngIf="insertarAntojito" (mostrar)="obtenerAntojitos()"></app-registrar-antojito>
+                <app-actualizar-antojito *ngIf="actualizarAntojito" [data]="categoriaData" (mostrar)="obtenerAntojitos()" (cancelar)="cancelarActualizarAntojito()" ></app-actualizar-antojito>
+                <app-actualizar-platillo *ngIf="actualizarPlatillo"[data]="platilloData" (cancelar)="cancelarActualizarPlatillo()" (mostrar)="mostrarPlatillosActualizados($event)"></app-actualizar-platillo>
+                <app-registrar-platillo *ngIf="insertarPlatillo" [idCategoria]="idCategoria" (cancelar)="cancelarInsertarPlatillo()" (mostrar)="mostrarPlatillos($event)"></app-registrar-platillo>
+            </div>
+            <div class="col-9 mt-2">
+                <app-antojitos *ngIf="tablaAntojito" [categoria]="categoria" (platillos)="mostrarPlatillos($event)" (mostrar)="obtenerAntojitos()" (platillos)="mostrarPlatillos($event)" (actualizar)="mostrarActualizarAntojito($event)"></app-antojitos>
+                <app-platillos *ngIf="!tablaAntojito" [platillo]="platillo" (mostrar)="mostrarPlatillos($event)" (actualizar)="mostrarActualizarPlatillo($event)"></app-platillos>
+            </div>
+        </div>
+    </div>
+</div>

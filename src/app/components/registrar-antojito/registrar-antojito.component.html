@@ -1,0 +1,27 @@
+<form (ngSubmit)="registrarAntojito(myForm)" #myForm="ngForm">
+        
+        <div class="form-group mt-3">
+            <h4>Registro de categoría</h4>
+            <hr>
+          <input type="text"
+            class="form-control" name="strNombre" #strNombre="ngModel" [(ngModel)]="categoria.strNombre" aria-describedby="helpId" placeholder="Nombre" [ngClass]="{ 'is-invalid': !strNombre.valid && strNombre.touched, 'is-valid': strNombre.valid} " required>
+          <small id="helpId" class="invalid-feedback">Ingrese el nombre de la categoria</small>
+        <div>
+            <textarea type="text"
+            class="form-control mt-2 md-2" name="strDescripcion" #strDescripcion="ngModel" [(ngModel)]="categoria.strDescripcion" aria-describedby="helpId" placeholder="Descripcion" [ngClass]="{ 'is-invalid': !strDescripcion.valid && strDescripcion.touched, 'is-valid': strDescripcion.valid} "required>
+          </textarea>
+          <small id="helpId" class="invalid-feedback">Ingrese la descripcion de la categoria</small>
+        
+        </div>
+       <div class="btn-group-sm mt-2 row" role="group">
+<div class="col">
+    <button type="button" name="" class="btn btn-danger btn-block" (click)="cancelar(myForm)">Cancelar</button>
+
+</div>        
+<div class="col">
+    <button type="submit" [disabled]="!myForm.valid" class="btn btn-success btn-block"> Registrar</button>
+        
+</div>
+       </div>
+        </div>
+</form>

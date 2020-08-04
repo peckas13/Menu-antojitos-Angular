@@ -1,0 +1,46 @@
+<form (ngSubmit)="registrarPlatillo(myForm)" #myForm="ngForm">
+    <div class="form-group mt-3">
+        <h4>Registro de platillo</h4>
+        <hr>
+      <div>
+        <input type="text"
+        class="form-control" name="strNombre" #strNombre="ngModel" [(ngModel)]="platillo.strNombre" aria-describedby="helpId" placeholder="Nombre" [ngClass]="{ 'is-invalid': !strNombre.valid && strNombre.touched, 'is-valid': strNombre.valid} " required>
+      <small id="helpId" class="invalid-feedback">Ingrese el nombre del platillo</small>
+      </div>
+    <div>
+        <textarea type="text"
+        class="form-control mt-2 md-2" name="strDescripcion" #strDescripcion="ngModel" [(ngModel)]="platillo.strDescripcion" aria-describedby="helpId" placeholder="Descripcion" [ngClass]="{ 'is-invalid': !strDescripcion.valid && strDescripcion.touched, 'is-valid': strDescripcion.valid} "required>
+      </textarea>
+      <small id="helpId" class="invalid-feedback">Ingrese la descripcion del platillo</small>
+    
+    </div>
+    <div>
+        <textarea type="text"
+        class="form-control mt-2 md-2" name="strIngredientes" #strIngredientes="ngModel" [(ngModel)]="platillo.strIngredientes" aria-describedby="helpId" placeholder="Ingredientes" [ngClass]="{ 'is-invalid': !strIngredientes.valid && strIngredientes.touched, 'is-valid': strIngredientes.valid} " required>
+      </textarea>
+      <small id="helpId" class="invalid-feedback">Ingrese los ingredientes del platillo</small>
+    
+    </div>
+   
+      <div>
+        <input type="number"
+        class="form-control" name="nmbPiezas" #nmbPiezas="ngModel" [(ngModel)]="platillo.nmbPiezas" aria-describedby="helpId" placeholder="No. piezas" [ngClass]="{ 'is-invalid': !nmbPiezas.valid && nmbPiezas.touched, 'is-valid': nmbPiezas.valid} " required>
+      <small id="helpId" class="invalid-feedback">Ingrese el numero de piezas disponibles</small>
+      </div>
+      <div>
+        <input type="number"
+        class="form-control" name="nmbPrecio" #nmbPrecio="ngModel" [(ngModel)]="platillo.nmbPrecio" aria-describedby="helpId" placeholder="Precio" [ngClass]="{ 'is-invalid': !nmbPrecio.valid && nmbPrecio.touched, 'is-valid': nmbPrecio.valid} " required>
+      <small id="helpId" class="invalid-feedback">Ingrese el precio del platillo</small>
+      </div>
+   <div class="btn-group-sm mt-2 row" role="group">
+<div class="col">
+<button type="button" name="" class="btn btn-danger btn-block" (click)="cancelarRegistrar()">Cancelar</button>
+
+</div>        
+<div class="col">
+<button type="submit" [disabled]="!myForm.valid" class="btn btn-success btn-block"> Registrar</button>
+    
+</div>
+   </div>
+    </div>
+</form>
